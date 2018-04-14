@@ -121,7 +121,7 @@ $records = $conn->query($sql);
             echo "<tr>";
 
 
-            echo "<td><a href=\"http://localhost/sixspartners/client-profile?client=".$results['name']."\">".$results['name']."</a></td>";
+            echo "<td><a href=\"http://localhost/wordpress/client-page?client=".$results['name']."\">".$results['name']."</a></td>";
 
             echo "<td>".$results['business']."</td>";
 
