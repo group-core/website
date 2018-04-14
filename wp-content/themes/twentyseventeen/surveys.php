@@ -1,4 +1,4 @@
-<?php /* Template Name: Main Page */ ?>
+<?php /* Template Name: Surveys Page */ ?>
 <?php
 @ob_start();
 session_start();
@@ -68,12 +68,6 @@ session_start();
 </div>
 
 <main role="main" class="container">
-    <div class="jumbotron">
-        <h1>CMS Dashboard</h1>
-        <p class="lead">This is the main CMS page where you can find all clients that answered surveys.
-            If you want to manage all surveys please go to Wordpress Dashboard by clicking on the button bellow.</p>
-        <a class="btn btn-lg btn-primary" href="http://localhost/sixspartners/wp-admin/" target="_blank" role="button">Wordpress &raquo;</a>
-    </div>
 
 
 	<?php
@@ -83,7 +77,7 @@ $conn = mysqli_connect("localhost", "root", "");
 //select the database name
 mysqli_select_db($conn,'bpacapstonedb');
 
-$sql = "SELECT * FROM wp_mlw_results";
+$sql = "SELECT * FROM wp_mlw_quizzes";
 
 $records = $conn->query($sql);
 
@@ -91,14 +85,15 @@ $records = $conn->query($sql);
 	
 	
     <div class="container">
-        <h2>Clients Table</h2>
-        <p>Clients tracking</p>
+        <h2>Surveys Table</h2>
+        <p>Surveys tracking</p>
         <table class="table table-hover">
             <thead>
              <tr>
-				<th>Client</th>
-				<th>Business</th>
-				<th>Contact</th>
+				<th>Survey Name</th>
+				<th>Survey views</th>
+				<th>Survey Taken</th>
+                 <th>Survey Edit</th>
 			</tr>
             </thead>
             <tbody>
@@ -114,23 +109,16 @@ $records = $conn->query($sql);
 
             echo "<tr>";
 
-            echo "<td><a href=\"http://localhost/wordpress/client-page?client=".$results['name']."\">".$results['name']."</a></td>";
 
-            echo "<td>".$results['business']."</td>";
+            echo "<td><a href=\"http://localhost/wordpress/quiz/?survey=".$results['quiz_name']."\" target='_blank'>".$results['quiz_name']."</a></td>";
 
-            echo "<td>".$results['email']."</td>";
+            echo "<td>".$results['quiz_views']."</td>";
+
+            echo "<td>".$results['quiz_taken']."</td>";
+
+            echo "<td><a href=\"http://localhost/wordpress/wp-admin/admin.php?page=mlw_quiz_options&quiz_id=".$results['quiz_id']."\" target='_blank'> Edit </a></td>";
 
             echo "</td>";
-
-            $client_name = $results['name'];
-
-
-
-        if( isset( $_SESSION['client'] ) )
-            {
-            $_SESSION['client'] = $client_name;
-            }
-
 
         }
         ?>
@@ -141,8 +129,6 @@ $records = $conn->query($sql);
     </div>
 
 </main>
-
-
 
 
 <!--Footer-->

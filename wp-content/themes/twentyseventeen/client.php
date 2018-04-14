@@ -33,9 +33,9 @@ mysqli_select_db($conn,'bpacapstonedb');
             <div id="site-header" class="container">
                 <div style="width: 150px; display: inline-block; vertical-align: top;">
                     <a href="http://localhost/bpa/">
-                        <img class="custom-logo" src="http://localhost/bpa/wp-content/themes/twentyseventeen-child/assets/images/sixspartners_logo.png" style="width: 150px;">
+                        <img class="custom-logo" src="http://localhost/wordpress/wp-content/themes/twentyseventeen/sixspartners_logo.png" style="width: 150px;">
                     </a>
-                </div>
+                </div>s
                 <div style="display: inline-block;">
                     <h1 class="site-title"><a href="http://localhost/bpa/" rel="home" style="color:#717273; text-decoration: none;">BPA Automation</a></h1>
                     <p class="site-description">Client Managment Dashboard</p>
@@ -53,18 +53,13 @@ mysqli_select_db($conn,'bpacapstonedb');
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="http://localhost/sixspartners/cms-dashboard/">Home</a>
+                    <a class="nav-link" href="http://localhost/wordpress/dashboard/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="localhost/wordpress/wp-admin">WP-Admin</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="surveys" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Questionnaires</a>
-                    <div class="dropdown-menu" aria-labelledby="surveys">
-                        <a class="dropdown-item" href="#">BPA-Survey1</a>
-                        <a class="dropdown-item" href="#">BPA-Survey2</a>
-                        <a class="dropdown-item" href="#">BPA-Survey3</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost/wordpress/surveys/" id="surveys">Questionnaires</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-md-0">
