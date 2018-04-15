@@ -25,12 +25,12 @@ session_start();
         <div class="site-branding text-center">
             <div id="site-header" class="container">
                 <div style="width: 150px; display: inline-block; vertical-align: top;">
-                    <a href="http://localhost/bpa/">
+                    <a href="http://localhost/wordpress/">
                         <img class="custom-logo" src="http://localhost/wordpress/wp-content/themes/twentyseventeen/sixspartners_logo.png" style="width: 150px;">
                     </a>
                 </div>
                 <div style="display: inline-block;">
-                    <h1 class="site-title"><a href="http://localhost/bpa/" rel="home" style="color:#717273; text-decoration: none;">BPA Automation</a></h1>
+                    <h1 class="site-title"><a href="http://localhost/wordpress/dashboard" rel="home" style="color:#717273; text-decoration: none;">BPA Automation</a></h1>
                     <p class="site-description">Client Managment Dashboard</p>
                 </div>
             </div><!-- .site-header -->
@@ -60,7 +60,7 @@ session_start();
             </form>
             <ul class="navbar-nav px-3">
                 <li class="nav-item text-nowrap">
-                    <a class="nav-link" href="#">Sign out</a>
+                    <a class="nav-link" href="http://localhost/wordpress/wp-login.php?action=logout&_wpnonce=a8c5c14c53">Sign out</a>
                 </li>
             </ul>
         </div>
@@ -110,7 +110,7 @@ $records = $conn->query($sql);
             echo "<tr>";
 
 
-            echo "<td><a href=\"http://localhost/wordpress/quiz/?survey=".$results['quiz_name']."\" target='_blank'>".$results['quiz_name']."</a></td>";
+            echo "<td><a href=\"http://localhost/wordpress/quiz/".$results['quiz_name']."\" target='_blank'>".$results['quiz_name']."</a></td>";
 
             echo "<td>".$results['quiz_views']."</td>";
 

@@ -32,12 +32,12 @@ mysqli_select_db($conn,'bpacapstonedb');
         <div class="site-branding text-center">
             <div id="site-header" class="container">
                 <div style="width: 150px; display: inline-block; vertical-align: top;">
-                    <a href="http://localhost/bpa/">
+                    <a href="http://localhost/wordpress/">
                         <img class="custom-logo" src="http://localhost/wordpress/wp-content/themes/twentyseventeen/sixspartners_logo.png" style="width: 150px;">
                     </a>
-                </div>s
+                </div>
                 <div style="display: inline-block;">
-                    <h1 class="site-title"><a href="http://localhost/bpa/" rel="home" style="color:#717273; text-decoration: none;">BPA Automation</a></h1>
+                    <h1 class="site-title"><a href="http://localhost/wordpress/dashboard" rel="home" style="color:#717273; text-decoration: none;">BPA Automation</a></h1>
                     <p class="site-description">Client Managment Dashboard</p>
                 </div>
             </div><!-- .site-header -->
@@ -67,7 +67,7 @@ mysqli_select_db($conn,'bpacapstonedb');
             </form>
             <ul class="navbar-nav px-3">
                 <li class="nav-item text-nowrap">
-                    <a class="nav-link" href="http://localhost/sixspartners/wp-login.php?action=logout&_wpnonce=a8c5c14c53">Sign out</a>
+                    <a class="nav-link" href="http://localhost/wordpress/wp-login.php?action=logout&_wpnonce=a8c5c14c53">Sign out</a>
 
                 </li>
             </ul>
@@ -80,9 +80,6 @@ mysqli_select_db($conn,'bpacapstonedb');
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
         <h1 class="h2">Client</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <div class="btn-group mr-2">               
-                <button class="btn btn-sm btn-outline-secondary">Export</button>
-            </div>
             <script>
                 function printPage() {
                     window.print();
