@@ -153,3 +153,6 @@ function qsm_results_details_tab() {
 }
 add_action( "plugins_loaded", 'qsm_results_details_tab' );
 ?>
+
+
+

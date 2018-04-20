@@ -56,7 +56,7 @@ mysqli_select_db($conn,'bpacapstonedb');
                     <a class="nav-link" href="http://localhost/wordpress/dashboard/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="localhost/wordpress/wp-admin">WP-Admin</a>
+                    <a class="nav-link" href="http://localhost/wordpress/wp-admin/" target="_blank">WP-Admin</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="http://localhost/wordpress/surveys/" id="surveys">Questionnaires</a>
