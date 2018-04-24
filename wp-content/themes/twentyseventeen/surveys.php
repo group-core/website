@@ -1,8 +1,19 @@
+<!-- BPA Automation Capstone project
+    purpose: Create a CMS dashboard to manage survey responses and track Sales stage
+    Group members:
+        Andy Lao
+        Fernando Pereira Borges
+        Haaris Haq
+
+    Conestoga College - April, 2018
+-->
 <?php /* Template Name: Surveys Page */ ?>
 <?php
-@ob_start();
+include 'DAO.php';
+include 'searchClient.php';
 session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +43,7 @@ session_start();
         <div class="site-branding text-center">
             <div id="site-header" class="container">
                 <div style="width: 150px; display: inline-block; vertical-align: top;">
-                    <a href="http://localhost/wordpress/">
+                    <a href="http://localhost/wordpress/dashboard">
                         <img class="custom-logo"
                              src="http://localhost/wordpress/wp-content/themes/twentyseventeen/sixspartners_logo.png"
                              style="width: 150px;">
@@ -85,18 +96,8 @@ session_start();
 
 
     <?php
-    //create connection to Database
-    $conn = mysqli_connect("localhost", "root", "");
-
-    //select the database name
-    mysqli_select_db($conn, 'bpacapstonedb');
-
     $sql = "SELECT * FROM wp_mlw_quizzes";
-
-    $records = $conn->query($sql);
-
-    include 'searchClient.php';
-
+    $records = mysqli_query($mysqli, $sql);
     ?>
 
 
@@ -117,13 +118,10 @@ session_start();
 
                 <?php
 
-
                 while ($results = mysqli_fetch_assoc($records)) {
 
-                    //On page 1
 
                     echo "<tr>";
-
 
                     echo "<td><a href=\"http://localhost/wordpress/quiz/" . $results['quiz_name'] . "\" target='_blank'>" . $results['quiz_name'] . "</a></td>";
 

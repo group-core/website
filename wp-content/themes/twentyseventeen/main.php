@@ -1,9 +1,20 @@
+<!-- BPA Automation Capstone project
+    purpose: Create a CMS dashboard to manage survey responses and track Sales stage
+    Group members:
+        Andy Lao
+        Fernando Pereira Borges
+        Haaris Haq
+
+    Conestoga College - April, 2018
+-->
 <?php /* Template Name: Main Page */ ?>
 <?php
+include 'DAO.php';
+include 'searchClient.php';
 session_start();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -33,18 +44,11 @@ session_start();
             src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
 
 
+
     <title>BPA Automation</title>
 
 
     <?php
-
-    $databaseHost = 'localhost';
-    $databaseName = 'bpacapstonedb';
-    $databaseUsername = 'root';
-    $databasePassword = '';
-
-    $mysqli = mysqli_connect($databaseHost, $databaseUsername, $databasePassword, $databaseName);
-
     //check if the starting row variable was passed in the URL or not
     if (!isset($_GET['clientrow']) or !is_numeric($_GET['clientrow'])) {
         //we give the value of the starting row to 0 because nothing was found in URL
@@ -70,7 +74,7 @@ session_start();
         <div class="site-branding text-center">
             <div id="site-header" class="container">
                 <div style="width: 150px; display: inline-block; vertical-align: top;">
-                    <a href="http://localhost/wordpress/">
+                    <a href="http://localhost/wordpress/dashboard">
                         <img class="custom-logo"
                              src="http://localhost/wordpress/wp-content/themes/twentyseventeen/sixspartners_logo.png"
                              style="width: 150px;">
@@ -106,9 +110,10 @@ session_start();
             </ul>
             <form class="form-inline my-2 my-md-0" role="search" method="get" class="search-form"
                   action="<?php echo esc_url(home_url('/')); ?>client-page/">
-                <input class="form-control" type="text" placeholder="Search Client" aria-label="Search"
+                <input class="form-control" type="text" placeholder="Search Client" aria-label="Search" id="search-client"
                        value="<?php echo get_search_query(); ?>" name="client"/>
             </form>
+
             <ul class="navbar-nav px-3">
                 <li class="nav-item text-nowrap">
                     <a class="nav-link"
@@ -129,6 +134,7 @@ session_start();
         <a class="btn btn-lg btn-primary" href="http://localhost/wordpress/wp-admin/" target="_blank" role="button">Wordpress
             &raquo;</a>
     </div>
+
 
     <form method='get'>
         <div class="container">
@@ -190,8 +196,6 @@ session_start();
 
         </div>
     </form>
-
-
 </main>
 
 

@@ -1,14 +1,17 @@
+<!-- BPA Automation Capstone project
+    purpose: Create a CMS dashboard to manage survey responses and track Sales stage
+    Group members:
+        Andy Lao
+        Fernando Pereira Borges
+        Haaris Haq
+
+    Conestoga College - April, 2018
+-->
 <?php /* Template Name: Clients Page */ ?>
 <?php
-session_start();
-
-//create connection to Database
-$conn = mysqli_connect("localhost", "root", "");
-
-//select the database name
-mysqli_select_db($conn, 'bpacapstonedb');
-
+include 'DAO.php';
 include 'searchClient.php';
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +32,8 @@ include 'searchClient.php';
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" type="text/css" href="stage-progress.css">
+
 
     <title>Client Profile</title>
 </head>
@@ -39,7 +44,7 @@ include 'searchClient.php';
         <div class="site-branding text-center">
             <div id="site-header" class="container">
                 <div style="width: 150px; display: inline-block; vertical-align: top;">
-                    <a href="http://localhost/wordpress/">
+                    <a href="http://localhost/wordpress/dashboard">
                         <img class="custom-logo"
                              src="http://localhost/wordpress/wp-content/themes/twentyseventeen/sixspartners_logo.png"
                              style="width: 150px;">
@@ -111,7 +116,8 @@ include 'searchClient.php';
     $client_value = $_REQUEST['client'];
 
     $sql = "SELECT * FROM wp_mlw_results WHERE name LIKE '$client_value'";
-    $results = $conn->query($sql);
+
+    $results = mysqli_query($mysqli, $sql);
     if ($results !== false && mysqli_num_rows($results) > 0) {
 
         echo "<h1>" . $client_value . "</h1><br>";
@@ -124,8 +130,7 @@ include 'searchClient.php';
     //Determine how many surveys exist
     $mlw_stat_total_active_quiz = "SELECT COUNT(deleted) FROM wp_mlw_quizzes WHERE deleted=0 LIMIT 1";
 
-    $records1 = $conn->query($mlw_stat_total_active_quiz);
-
+    $records1 = mysqli_query($mysqli, $mlw_stat_total_active_quiz);
 
     while ($total = mysqli_fetch_assoc($records1)) {
         $totalNumber = $total['COUNT(deleted)'];
@@ -133,7 +138,8 @@ include 'searchClient.php';
 
     //Determine how many quizzes were answered
     $totalQuizzesAnswered = "SELECT COUNT(quiz_id) FROM wp_mlw_results WHERE name= '$client_value'";
-    $records2 = $conn->query($totalQuizzesAnswered);
+
+    $records2 = mysqli_query($mysqli, $totalQuizzesAnswered);
 
     while ($total = mysqli_fetch_assoc($records2)) {
         $totalResults = $total['COUNT(quiz_id)'];
@@ -188,7 +194,7 @@ include 'searchClient.php';
         <div id="accordion">
             <?php
             $sql = "SELECT * FROM wp_mlw_results WHERE name LIKE '$client_value'";
-            $results = $conn->query($sql);
+            $results = mysqli_query($mysqli, $sql);
             if ($results !== false && mysqli_num_rows($results) > 0) {
                 $i = 1;
                 while ($records = mysqli_fetch_assoc($results)) {
